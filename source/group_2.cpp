@@ -31,12 +31,12 @@ void heapSort(vector<int>& arr) {
 }
 
 // Merge sort
-void merge(vector<int>& arr, int l, int m, int r) {
+void merge (vector<int>& arr, int l, int m, int r) {
     vector<int> x(arr.begin() + l, arr.begin() + m + 1);
     vector<int> y(arr.begin() + m + 1, arr.begin() + r + 1);
     int i = 0, j = 0;
     while (i < x.size() && j < y.size()) {
-        if(x[i] <= y[j]) {
+        if (x[i] <= y[j]) {
             arr[l] = x[i]; i++; l++;
         }
         else {

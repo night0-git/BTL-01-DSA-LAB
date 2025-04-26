@@ -1,14 +1,14 @@
 #include "group_3.h"
 
 // Radix sort
-int findMax(vector<int>& arr) {
-    int mx = arr[0];
+int findMax(const vector<int>& arr) {
+    int max = arr[0];
     for (int i = 1; i < arr.size(); i++) {
-        if (arr[i] > mx) {
-            mx = arr[i];
+        if (arr[i] > max) {
+            max = arr[i];
         }
     }
-    return mx;
+    return max;
 }
 
 vector<int> countingSort(vector<int>& arr, int exp) {

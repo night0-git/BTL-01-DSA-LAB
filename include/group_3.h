@@ -3,7 +3,7 @@
 using std::vector;
 
 // Radix sort
-int findMax(vector<int>& arr);
+int findMax(const vector<int>& arr);
 vector<int> countingSort(vector<int>& arr, int exp);
 void radixSort(vector<int>& arr);
 
