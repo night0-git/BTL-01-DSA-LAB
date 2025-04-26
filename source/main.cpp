@@ -10,7 +10,9 @@ int main() {
     vector<int> range = {1, 2, 4, 6, 8, 10, 12, 14, 16, 20};
     for (int num : range) {
         // Generate a random array of size n with values between 0 and k
-        vector<int> arr = arrayInit(num * 1000000, 1000000000);
+        // vector<int> arr = arrayInitRandom(num * 1000000, 1000000000);
+        vector<int> arr = arrayInitNearlySorted(num * 1000000, 1000000000);
+
         // Measure execution time 5 times and calculate the average
         double totalTime = 0.0;
         for (int i = 0; i < 5; i++) {
@@ -18,7 +20,7 @@ int main() {
             vector<int> tempArr = arr;
 
             // Measure time
-            totalTime += measureExecutionTime([&tempArr]() { countSort(tempArr); });
+            totalTime += measureExecutionTime([&tempArr]() { quickSort(tempArr, 0, tempArr.size() - 1); });
 
             // Check if array is sorted successfully
             if (!isSorted(tempArr)) {

@@ -9,4 +9,13 @@ void swap(int& a, int& b);
 bool isSorted(vector<int> arr);
 
 // generate a random array
-vector<int> arrayInit(int n, int k);
+vector<int> arrayInitRandom(int n, int k);
+
+// generate a sorted array
+vector<int> arrayInitSorted(int n);
+
+// generate a reverse sorted array
+vector<int> arrayInitReverseSorted(int n);
+
+// generate a nearly sorted array
+vector<int> arrayInitNearlySorted(int n, int k);

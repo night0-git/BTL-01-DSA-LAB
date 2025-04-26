@@ -18,8 +18,8 @@ bool isSorted (vector<int> arr) {
 }
 
 // generate a random array
-std::vector<int> arrayInit(int n, int k) {
-    std::vector<int> arr;
+vector<int> arrayInitRandom(int n, int k) {
+    vector<int> arr;
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(0, k);
@@ -28,5 +28,45 @@ std::vector<int> arrayInit(int n, int k) {
         val = distrib(gen);
         arr.push_back(val);
     }
+    return arr;
+}
+
+// generate a sorted array
+vector<int> arrayInitSorted(int n, int k) {
+    vector<int> arr;
+    for (int i = 0; i < n; i++) {
+        arr.push_back(i * k / (n - 1));
+    }
+    return arr;
+}
+
+// generate a reverse sorted array
+vector<int> arrayInitReverseSorted(int n, int k) {
+    vector<int> arr;
+    for (int i = 0; i < n; i++) {
+        arr.push_back(k - (i * k / (n - 1)));
+    }
+    return arr;
+}
+
+// generate a nearly sorted array
+vector<int> arrayInitNearlySorted(int n, int k) {
+    vector<int> arr;
+    for (int i = 0; i < n; i++) {
+        arr.push_back(i * k / (n - 1));
+    }
+
+    std::random_device rd;
+    std::default_random_engine rng(rd());
+    std::uniform_int_distribution<int> dist(0, n - 1);
+
+    // swap 5% of elements
+    int swapCount = n / 20;
+    for (int i = 0; i < swapCount; i++) {
+        int x = dist(rng);
+        int y = dist(rng);
+        swap(arr[x], arr[y]);
+    }
+
     return arr;
 }
