@@ -1,4 +1,10 @@
-#include "header.h"
+#include <iostream>
+#include "group_1.h"
+#include "group_2.h"
+#include "group_3.h"
+#include "helper.h"
+#include "measureTime.h"
+using std::cout, std::endl;
 
 int main() {
     vector<int> range = {1, 2, 4, 6, 8, 10, 12, 14, 16, 20};
@@ -12,11 +18,11 @@ int main() {
             vector<int> tempArr = arr;
 
             // Measure time
-            totalTime += measureExecutionTime([&tempArr]() { quickSort(tempArr, 0, tempArr.size() - 1); });
+            totalTime += measureExecutionTime([&tempArr]() { countSort(tempArr); });
 
             // Check if array is sorted successfully
             if (!isSorted(tempArr)) {
-                cout << "Unsorted array is detected." << endl;
+                cout << "Unsorted array detected." << endl;
                 return 1;
             }
         }

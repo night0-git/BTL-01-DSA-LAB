@@ -7,7 +7,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}\\*.cpp",
+                "-I${workspaceFolder}\\include",
+                "${workspaceFolder}\\source\\*.cpp",
                 "-o",
                 "${workspaceFolder}\\build\\run.exe"
             ],
@@ -21,7 +22,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Builds all cpp files in the project."
+            "detail": "Compiles all cpp files in the src folder"
         }
     ],
     "version": "2.0.0"
