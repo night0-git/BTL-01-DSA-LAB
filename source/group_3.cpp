@@ -11,29 +11,47 @@ int findMax(const vector<int>& arr) {
     return max;
 }
 
-vector<int> countingSort(vector<int>& arr, int exp) {
+void countingSort(vector<int>& arr, long long exp) {
     int n = arr.size();
     vector<int> res(n);
     vector<int> count(10, 0);
+    
     for (int i = 0; i < n; i++) {
         int digit = (arr[i] / exp) % 10;
         count[digit]++;
     }
+    
     for (int i = 1; i < 10; i++) {
         count[i] += count[i - 1];
     }
+    
     for (int i = n - 1; i >= 0; i--) {
         int digit = (arr[i] / exp) % 10;
         res[count[digit] - 1] = arr[i];
         count[digit]--;
     }
-    return res;
+
+    for (int i = 0; i < n; i++) {
+        arr[i] = res[i];
+    }
 }
 
-void radixSort (vector<int>& arr) {
+void radixSort(vector<int>& arr) {
+    if (arr.empty()) return;
+    
+    bool already_sorted = true;
+    for (int i = 1; i < arr.size(); i++) {
+        if (arr[i] < arr[i-1]) {
+            already_sorted = false;
+            break;
+        }
+    }
+    if (already_sorted) return;
+    
     int mx = findMax(arr);
-    for (int exp = 1; mx / exp > 0; exp *= 10) {
-        arr = countingSort(arr, exp);
+    for (long long exp = 1; mx / exp > 0; exp *= 10) {
+        if (exp > INT_MAX / 10) break;
+        countingSort(arr, exp);
     }
 }
 
