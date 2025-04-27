@@ -35,7 +35,7 @@ vector<int> arrayInitRandom(int n, int k) {
 vector<int> arrayInitSorted(int n, int k) {
     vector<int> arr;
     for (int i = 0; i < n; i++) {
-        arr.push_back(i * k / (n - 1));
+        arr.push_back(static_cast<int>(static_cast<long long>(i) * k / (n - 1)));
     }
     return arr;
 }
@@ -44,7 +44,7 @@ vector<int> arrayInitSorted(int n, int k) {
 vector<int> arrayInitReverseSorted(int n, int k) {
     vector<int> arr;
     for (int i = 0; i < n; i++) {
-        arr.push_back(k - (i * k / (n - 1)));
+        arr.push_back(k - static_cast<int>(static_cast<long long>(i) * k / (n - 1)));
     }
     return arr;
 }
@@ -53,7 +53,8 @@ vector<int> arrayInitReverseSorted(int n, int k) {
 vector<int> arrayInitNearlySorted(int n, int k) {
     vector<int> arr;
     for (int i = 0; i < n; i++) {
-        arr.push_back(i * k / (n - 1));
+        long long val = static_cast<long long>(i) * k / (n - 1);
+        arr.push_back(static_cast<int>(val));
     }
 
     std::random_device rd;

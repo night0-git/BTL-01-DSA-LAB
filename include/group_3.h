@@ -8,4 +8,4 @@ vector<int> countingSort(vector<int>& arr, int exp);
 void radixSort(vector<int>& arr);
 
 // Counting sort
-void countSort(vector<int>& arr);
+void countingSort(vector<int>& arr);

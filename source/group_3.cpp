@@ -11,13 +11,13 @@ int findMax(const vector<int>& arr) {
     return max;
 }
 
-void countingSort(vector<int>& arr, long long exp) {
+void countingSort(vector<int>& arr, unsigned long long exp) {
     int n = arr.size();
     vector<int> res(n);
     vector<int> count(10, 0);
     
     for (int i = 0; i < n; i++) {
-        int digit = (arr[i] / exp) % 10;
+        int digit = static_cast<int>((static_cast<unsigned long long>(arr[i]) / exp) % 10);
         count[digit]++;
     }
     
@@ -26,37 +26,26 @@ void countingSort(vector<int>& arr, long long exp) {
     }
     
     for (int i = n - 1; i >= 0; i--) {
-        int digit = (arr[i] / exp) % 10;
+        int digit = static_cast<int>((static_cast<unsigned long long>(arr[i]) / exp) % 10);
         res[count[digit] - 1] = arr[i];
         count[digit]--;
     }
 
-    for (int i = 0; i < n; i++) {
-        arr[i] = res[i];
-    }
+    arr = res;
 }
 
 void radixSort(vector<int>& arr) {
     if (arr.empty()) return;
     
-    bool already_sorted = true;
-    for (int i = 1; i < arr.size(); i++) {
-        if (arr[i] < arr[i-1]) {
-            already_sorted = false;
-            break;
-        }
-    }
-    if (already_sorted) return;
-    
-    int mx = findMax(arr);
-    for (long long exp = 1; mx / exp > 0; exp *= 10) {
-        if (exp > INT_MAX / 10) break;
+    int max = findMax(arr);
+    for (unsigned long long exp = 1; max / exp > 0; exp *= 10) {
+        if (exp > ULLONG_MAX / 10) break;
         countingSort(arr, exp);
     }
 }
 
 // Counting sort
-void countSort(vector<int>& arr) {
+void countingSort(vector<int>& arr) {
     int n = arr.size();
     if (n == 0) return;
 
