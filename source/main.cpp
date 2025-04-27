@@ -10,16 +10,16 @@ int main() {
     vector<int> range = {1, 2, 4, 6, 8, 10, 12, 14, 16, 20};
     for (int num : range) {
         // Generate a random array of size n with values between 0 and k
-        vector<int> arr = arrayInitRandom(num * 1000000, 1000000000);
+        vector<int> arr = arrayInitNearlySorted(num * 10000, 1000000000);
 
         // Measure execution time 5 times and calculate the average
         double totalTime = 0.0;
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             // Create a copy of the array for each run
             vector<int> tempArr = arr;
 
             // Measure time
-            totalTime += measureExecutionTime([&tempArr]() { heapSort(tempArr); });
+            totalTime += measureExecutionTime([&tempArr]() { binaryInsertionSort(tempArr); });
 
             // Check if array is sorted successfully
             if (!isSorted(tempArr)) {
@@ -28,7 +28,7 @@ int main() {
             }
         }
 
-        double averageTime = totalTime / 1.0;
+        double averageTime = totalTime / 5.0;
 
         // Print the average time taken
         cout << "Average time taken to sort (5 runs, " << num << "*10^6 elements): " << averageTime << " ms" << endl;

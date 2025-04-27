@@ -12,10 +12,10 @@ bool isSorted(vector<int> arr);
 vector<int> arrayInitRandom(int n, int k);
 
 // generate a sorted array
-vector<int> arrayInitSorted(int n);
+vector<int> arrayInitSorted(int n, int k);
 
 // generate a reverse sorted array
-vector<int> arrayInitReverseSorted(int n);
+vector<int> arrayInitReverseSorted(int n, int k);
 
 // generate a nearly sorted array
 vector<int> arrayInitNearlySorted(int n, int k);
